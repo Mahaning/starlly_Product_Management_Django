@@ -18,31 +18,6 @@ class ProductListAPIView(generics.ListAPIView):
     search_fields = ['name']
     ordering_fields = ['price', 'created_at']
 
-# for single code to filter for name,price range and also work to retrive all data-------
-# class ProductListAPIView(generics.ListAPIView):
-#     queryset = Product.objects.active()
-#     serializer_class = ProductSerializer
-#     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-#     filterset_fields = ['name']  # Add fields you want to filter via Django filters
-#     search_fields = ['name']
-#     ordering_fields = ['price', 'created_at']
-
-#     def get_queryset(self):
-#         queryset = self.queryset
-
-#         # Handle price filtering
-#         min_price = self.request.query_params.get('min_price')
-#         max_price = self.request.query_params.get('max_price')
-
-#         if min_price is not None:
-#             queryset = queryset.filter(price__gte=min_price)
-        
-#         if max_price is not None:
-#             queryset = queryset.filter(price__lte=max_price)
-
-#         return queryset
-
-
 # ---------Create Product------------
 class ProductCreateAPIView(generics.CreateAPIView):
     queryset = Product.objects.all()
